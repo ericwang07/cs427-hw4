@@ -25,8 +25,8 @@ public:
   ~Kalah() = default;
   // implement game logic
   bool isOver();
-  bool isValidMove(int move);
-  void doMove(int move);
-  int numCaptured();
+  // bool isValidMove(int move);
+  // void doMove(int move);
+  // int numCaptured();
   void showBoard() { cout << board_ << endl; };
 };

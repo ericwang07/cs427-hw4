@@ -13,24 +13,19 @@
 
 class Pit {
 private:
-  shared_ptr<Player> owner_; // NOTE: remove
-  std::string label_;
+  int seeds_;
   Pit *next_;
   Pit *opposite_;
-  int seeds_;
-  // NOTE: seeds member variable should be included and
-  // initialized, but due to it not being used, a compiler will
-  // throw a warning, so it is omitted for this assignment
-
+  std::string label_;
+  shared_ptr<Player> owner_; // NOTE: remove
 public:
   Pit() // default constructor
-      : owner_(nullptr), label_(""), next_(nullptr), opposite_(nullptr),
-        seeds_(0) {}
+      : seeds_(0), next_(nullptr), opposite_(nullptr), label_(""),
+        owner_(nullptr) {}
   Pit(shared_ptr<Player> player, int id, Pit *next, Pit *opposite, int seeds)
-      : owner_(player), label_(owner_->code + std::to_string(id)), next_(next),
-        opposite_(opposite), seeds_(seeds) {}
+      : seeds_(seeds), next_(next), opposite_(opposite),
+        label_(player->code + std::to_string(id)), owner_(player) {}
   ~Pit() = default;
-
   ostream &print(ostream &out) const {
     out << "pit[" << label_ << "]: ";
     out << seeds_ << " seeds, ";
