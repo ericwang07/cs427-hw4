@@ -41,3 +41,4 @@ std::ostream &Board::print(std::ostream &out) const {
   out << "Exiting Board::print()" << std::endl;
   return out;
 }
+// hi my name is eric
