@@ -14,4 +14,4 @@ clean:
 	rm -f $(OBJ) $(TARGET)
 #-----------------------------------------------------------
 # Dependencies
-main.o: main.cpp kalah.hpp game.hpp board.cpp board.hpp pit.hpp player.hpp tools.cpp tools.hpp
+main.o: main.cpp kalah.hpp kalah.cpp game.hpp game.cpp board.cpp board.hpp pit.hpp player.hpp tools.cpp tools.hpp

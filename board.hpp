@@ -13,17 +13,23 @@
 class Board {
 private:
   const int h_;
-  std::shared_ptr<Player> northPlayer_;
-  std::shared_ptr<Player> southPlayer_;
+  const int maxSeeds_;
+  Player *northPlayer_;
+  Player *southPlayer_;
   std::unique_ptr<Pit[]> pitWarehouse_;
   void createPits(int);
+  int findIndex(int move, Side side);
+  int findStoreIndex(Side side);
+  // void checkCapture(int index);
+  void printHouses(Side side, std::ostream &out);
 
 public:
-  Board(int numHouses, int initSeeds, std::shared_ptr<Player> northPlayer,
-        std::shared_ptr<Player> southPlayer);
+  Board(int numHouses, int initSeeds, Player *northPlayer, Player *southPlayer);
   ~Board() = default;
   std::ostream &print(std::ostream &out) const;
   void run() const;
+  int sowSeeds(int move, Player *player);
+  bool isTerminal();
 };
 
 inline std::ostream &operator<<(std::ostream &out, const Board &b) {

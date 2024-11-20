@@ -1,19 +1,16 @@
 #pragma once
 #include "kalah.hpp"
-#include "player.hpp"
 
 class Game {
 private:
   Kalah kalah_;
-
-  Player checkTurn();
-  bool isGameOver();
-  void captureSeeds();
+  int maxMove_;
 
 public:
-  Game(int numHouses, int numSeeds) : kalah_(numHouses, numSeeds){};
+  Game(int numHouses, int numSeeds)
+      : kalah_(numHouses, numSeeds), maxMove_(numHouses){};
 
   // implement game logic
-  void displayBoard() { kalah_.showBoard(); }
+  void displayBoard();
   void playGame();
 };
