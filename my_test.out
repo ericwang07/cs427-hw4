@@ -56,31 +56,9 @@ South's turn:
           [ 6]  [ 6]  [ 5]  [ 0]  [ 1]  [ 6]
            S6    S5    S4    S3    S2    S1
 
-Please enter a pit number for South (q to quit): 
-South playing move 3
-Turn is over
+Please enter a pit number for South (q to quit): Can't choose an empty pit
+Bad input -- please try again
 
-----------
-North's turn:
-           N1    N2    N3    N4    N5    N6
-          [ 1]  [ 0]  [ 4]  [ 4]  [ 5]  [ 6]
-  N0 [ 2]                                    [ 2] S0
-          [ 6]  [ 6]  [ 5]  [ 0]  [ 1]  [ 6]
-           S6    S5    S4    S3    S2    S1
-
-Please enter a pit number for North (q to quit): 
-North playing move 2
-Turn is over
-
-----------
-South's turn:
-           N1    N2    N3    N4    N5    N6
-          [ 1]  [ 0]  [ 4]  [ 4]  [ 5]  [ 6]
-  N0 [ 2]                                    [ 2] S0
-          [ 6]  [ 6]  [ 5]  [ 0]  [ 1]  [ 6]
-           S6    S5    S4    S3    S2    S1
-
-Please enter a pit number for South (q to quit): 
 South playing move 1
 Turn is over
 
@@ -93,4 +71,16 @@ North's turn:
            S6    S5    S4    S3    S2    S1
 
 Please enter a pit number for North (q to quit): 
-Game over -- goodbye!
+North playing move 2
+Turn is over
+
+----------
+South's turn:
+           N1    N2    N3    N4    N5    N6
+          [ 2]  [ 0]  [ 5]  [ 5]  [ 6]  [ 7]
+  N0 [ 2]                                    [ 3] S0
+          [ 6]  [ 6]  [ 5]  [ 0]  [ 1]  [ 0]
+           S6    S5    S4    S3    S2    S1
+
+Please enter a pit number for South (q to quit): Can't choose an empty pit
+Bad input -- please try again

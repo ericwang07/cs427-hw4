@@ -43,15 +43,26 @@ void Board::createPits(int initSeeds) {
   }
 }
 
-int Board::sowSeeds(int move, Player *player) {
-  int index = findIndex(move, player->side);
-  int storeIndex = findStoreIndex(player->side);
+Pit *Board::getPit(int move, Side s) {
+  int index = findIndex(move, s);
+  return &pitWarehouse_[index];
+}
 
-  int n = pitWarehouse_[index].grab();
-  Pit *currPit = pitWarehouse_[index].getNext();
+Pit *Board::getStore(Side s) {
+  if (s == Side::South) {
+    return &pitWarehouse_[h_];
+  } else {
+    return &pitWarehouse_[2 * h_ + 1];
+  }
+}
+
+int Board::sowSeeds(int n, Side side, Pit *startPit) {
+  int storeIndex = findStoreIndex(side); // NOTE: find another way to get stores
+
+  Pit *currPit = startPit->getNext();
 
   while (n > 0) {
-    if (currPit->isOppositeStore(player->side)) {
+    if (currPit->isOppositeStore(side)) {
       continue;
     }
 
@@ -59,11 +70,11 @@ int Board::sowSeeds(int move, Player *player) {
     n--;
 
     if (n == 0) { // done dropping last stone
-      if (currPit->isSameStore(player->side)) {
+      if (currPit->isSameStore(side)) {
         return -1; // current player gets another turn
       }
 
-      int captured = currPit->captureOpposite(player->side);
+      int captured = currPit->captureOpposite(side);
       pitWarehouse_[storeIndex].drop(captured);
       return captured;
     }
@@ -74,9 +85,35 @@ int Board::sowSeeds(int move, Player *player) {
   return 0; // return the other player
 }
 
-bool Board::isTerminal() {
-  return pitWarehouse_[h_].getSeeds() + pitWarehouse_[2 * h_ + 1].getSeeds() ==
-         maxSeeds_;
+void Board::collectRemaining(Side side, Side otherSide) {
+  int captured = 0;
+  if (side == Side::South) {
+    for (int i = 0; i < h_; i++) {
+      captured += pitWarehouse_[i].getSeeds();
+    }
+  }
+
+  int storeIndex =
+      findStoreIndex(otherSide); // NOTE: find another way to get stores
+  pitWarehouse_[storeIndex].drop(captured);
+}
+
+int Board::getNorthTotal() {
+  int n = 0;
+  for (int i = h_ + 1; i < 2 * h_ + 1; i++) { // North
+    n += pitWarehouse_[i].getSeeds();
+  }
+
+  return n;
+};
+
+int Board::getSouthTotal() {
+  int n = 0;
+  for (int i = 0; i < h_; i++) { // South
+    n += pitWarehouse_[i].getSeeds();
+  }
+
+  return n;
 };
 
 std::ostream &Board::print(std::ostream &out) const {

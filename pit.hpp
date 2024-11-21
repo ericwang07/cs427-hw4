@@ -46,6 +46,7 @@ public:
     return side != player_->side && isStore_();
   }
   bool isSameStore(Side side) { return side == player_->side && isStore_(); }
+  bool isEmpty() { return seeds_ == 0; }
 
   int captureOpposite(Side side) {
     if (side == player_->side && seeds_ == 1 && opposite_->seeds_ > 0) {

@@ -28,8 +28,13 @@ public:
   ~Board() = default;
   std::ostream &print(std::ostream &out) const;
   void run() const;
-  int sowSeeds(int move, Player *player);
-  bool isTerminal();
+  int sowSeeds(int n, Side side, Pit *startPit);
+  void collectRemaining(Side side, Side otherSide);
+  Pit *getPit(int move, Side side);
+  Pit *getStore(Side side);
+  Player *getWinner();
+  int getNorthTotal();
+  int getSouthTotal();
 };
 
 inline std::ostream &operator<<(std::ostream &out, const Board &b) {

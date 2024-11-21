@@ -22,6 +22,4 @@ int main(int argc, char *argv[]) {
 
   Game game(numHouses, numSeeds);
   game.playGame();
-
-  std::cout << "Game over -- goodbye!" << std::endl;
 }

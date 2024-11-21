@@ -4,11 +4,9 @@
 class Game {
 private:
   Kalah kalah_;
-  int maxMove_;
 
 public:
-  Game(int numHouses, int numSeeds)
-      : kalah_(numHouses, numSeeds), maxMove_(numHouses){};
+  Game(int numHouses, int numSeeds) : kalah_(numHouses, numSeeds){};
 
   // implement game logic
   void displayBoard();
