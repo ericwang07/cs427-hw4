@@ -9,9 +9,10 @@ private:
   Player northPlayer_;
   Player southPlayer_;
   Player *currPlayer_;
+
   Board board_;
 
-  int maxSeeds_;
+  int maxSeeds_; // NOTE: sus
   int maxMove_;
 
   bool anotherTurn_;

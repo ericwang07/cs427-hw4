@@ -3,6 +3,38 @@
 #include "outcome.hpp"
 #include <ostream>
 
+void Game::playGame() {
+  while (!std::cin.eof()) {
+
+    printInfo();
+
+    int move;
+
+    if (!askValidMove(move)) {
+      return;
+    };
+
+    executeMove(move);
+
+    if (kalah_.isOver()) {
+      finishGame();
+      return;
+    }
+
+    if (kalah_.getAnotherTurn()) {
+      std::cout << kalah_.getCurrPlayer() << " gets another turn" << std::endl;
+      continue;
+    }
+
+    if (kalah_.getWasCaptured() && kalah_.getSeedsCaptured() > 0) {
+      std::cout << "Captured " << kalah_.getSeedsCaptured() << " seeds"
+                << std::endl;
+    }
+
+    std::cout << "Turn is over" << std::endl;
+  }
+}
+
 void Game::printInfo() {
   cout << "\n----------" << std::endl;
   cout << kalah_.getCurrPlayer() << "'s turn:" << std::endl;
@@ -70,36 +102,4 @@ void Game::finishGame() {
             << std::endl;
 
   std::cout << "Game over -- goodbye!" << std::endl;
-}
-
-void Game::playGame() {
-  while (!std::cin.eof()) {
-
-    printInfo();
-
-    int move;
-
-    if (!askValidMove(move)) {
-      return;
-    };
-
-    executeMove(move);
-
-    if (kalah_.isOver()) {
-      finishGame();
-      return;
-    }
-
-    if (kalah_.getAnotherTurn()) {
-      std::cout << kalah_.getCurrPlayer() << " gets another turn" << std::endl;
-      continue;
-    }
-
-    if (kalah_.getWasCaptured() && kalah_.getSeedsCaptured() > 0) {
-      std::cout << "Captured " << kalah_.getSeedsCaptured() << " seeds"
-                << std::endl;
-    }
-
-    std::cout << "Turn is over" << std::endl;
-  }
 }
