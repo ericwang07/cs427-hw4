@@ -86,13 +86,7 @@ int Board::sowSeeds(int n, Side side, Pit *startPit) {
 }
 
 void Board::collectRemaining(Side side, Side otherSide) {
-  int captured = 0;
-  if (side == Side::South) {
-    for (int i = 0; i < h_; i++) {
-      captured += pitWarehouse_[i].getSeeds();
-    }
-  }
-
+  int captured = grabRow(side);
   int storeIndex =
       findStoreIndex(otherSide); // NOTE: find another way to get stores
   pitWarehouse_[storeIndex].drop(captured);
@@ -115,6 +109,21 @@ int Board::getSouthTotal() {
 
   return n;
 };
+
+int Board::grabRow(Side side) {
+  int n = 0;
+  if (side == Side::South) {
+    for (int i = 0; i < h_; i++) { // South
+      n += pitWarehouse_[i].grab();
+    }
+  } else {
+    for (int i = h_ + 1; i < 2 * h_ + 1; i++) { // North
+      n += pitWarehouse_[i].grab();
+    }
+  }
+
+  return n;
+}
 
 std::ostream &Board::print(std::ostream &out) const {
   std::ostringstream ss;

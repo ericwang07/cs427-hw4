@@ -49,6 +49,7 @@ bool Kalah::isOver() {
 };
 
 void Kalah::endGame() {
+  std::cout << "empty: " << emptyPlayer_->name << std::endl;
   board_.collectRemaining(emptyPlayer_->otherSide(), emptyPlayer_->side);
   northSeeds_ = board_.getStore(Side::North)->getSeeds();
   southSeeds_ = board_.getStore(Side::South)->getSeeds();

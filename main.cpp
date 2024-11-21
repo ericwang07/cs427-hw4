@@ -5,11 +5,11 @@
  *  Created on: Oct 17, 2016; October 28, 2024
  *      Author: mike
  */
+
 #include "game.cpp"
 #include "tools.cpp"
-// #include "unitTest.cpp"
 
-static string usage = "usage: frametest numHouses numSeeds";
+static string usage = "usage: kalah numHouses numSeeds";
 
 //-----------------------------------------------------------------------------
 int main(int argc, char *argv[]) {

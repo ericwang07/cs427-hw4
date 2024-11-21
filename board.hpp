@@ -35,6 +35,7 @@ public:
   Player *getWinner();
   int getNorthTotal();
   int getSouthTotal();
+  int grabRow(Side side);
 };
 
 inline std::ostream &operator<<(std::ostream &out, const Board &b) {
