@@ -17,6 +17,15 @@
     b. If it returns 0, there was no capture.
     c. If it returns a negative integer, the last stone to be sowed landed in curr player's store. Another turn is granted.
 
+## Tests
+I implemented 3 additional tests testing the following situations:
+1. sample5: A full game with a tie outcome.
+2. sample6: A full game with a South victory.
+2. sample7: A full game with a North victory.
+All tests have a corresponding input/output file pair.
+
+I have also attached a testing shell script that runs all 7 tests simultaneously and diffs them with the expected
+output simultaneously. It is called test_kalah.sh. Try running it with ./test_kalah.sh numHouses numSeeds.
 
 
 
